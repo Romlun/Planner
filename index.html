@@ -199,6 +199,81 @@
   }
   .btn-primary:hover{background:var(--teal);}
   .btn-primary:disabled{opacity:0.6;cursor:default;}
+
+  /* ---- Task edit/delete ---- */
+  .task-edit-btn{
+    background:none;border:none;color:var(--slate);cursor:pointer;font-size:12px;
+    padding:2px 6px;border-radius:5px;font-family:'Inter',sans-serif;
+  }
+  .task-edit-btn:hover{color:var(--teal-dark);background:var(--teal-tint);}
+  .btn-danger{
+    background:#fff;border:1px solid var(--red);color:var(--red);border-radius:8px;
+    padding:9px 16px;font-size:13.5px;cursor:pointer;font-family:'Inter',sans-serif;
+  }
+  .btn-danger:hover{background:var(--red-tint);}
+
+  /* ---- My tasks toggle ---- */
+  .my-tasks-bar{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;
+    background:var(--paper-raised);border:1px solid var(--hairline);border-radius:10px;padding:10px 12px;
+  }
+  .my-tasks-bar label.toggle-label{
+    display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);font-weight:500;cursor:pointer;
+  }
+  .toggle-switch{
+    position:relative;width:38px;height:22px;background:var(--slate-tint);border-radius:11px;
+    cursor:pointer;flex-shrink:0;transition:background .15s;
+  }
+  .toggle-switch.on{background:var(--teal);}
+  .toggle-switch .knob{
+    position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;
+    transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,0.3);
+  }
+  .toggle-switch.on .knob{left:18px;}
+  .my-tasks-bar input[type=text]{width:140px;font-size:12.5px;padding:6px 9px;}
+
+  /* ---- Contacts / Documents ---- */
+  .contacts-toolbar{display:flex;gap:8px;justify-content:flex-end;margin-bottom:14px;}
+  .contact-card{
+    background:var(--paper-raised);border:1px solid var(--hairline);border-radius:10px;
+    padding:14px 16px;margin-bottom:10px;
+  }
+  .contact-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .contact-name{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--ink);}
+  .contact-org{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+  .contact-detail{font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.5;}
+  .contact-detail b{color:var(--ink);font-weight:500;}
+  .contact-notes{font-size:12px;color:var(--slate);margin-top:6px;font-style:italic;}
+  .contact-actions{display:flex;gap:4px;flex-shrink:0;}
+  .doclink-row{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    background:var(--paper-raised);border:1px solid var(--hairline);border-radius:10px;
+    padding:11px 14px;margin-bottom:8px;
+  }
+  .doclink-main a{font-size:13.5px;font-weight:500;color:var(--teal-dark);text-decoration:none;}
+  .doclink-main a:hover{text-decoration:underline;}
+  .doclink-meta{font-size:11.5px;color:var(--slate);margin-top:3px;}
+  .contacts-section-title{
+    font-size:16px;margin:0 0 10px;font-family:'Fraunces',serif;font-weight:600;color:var(--ink);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+
+  /* ---- Snapshot / print ---- */
+  .snapshot-btn{
+    background:#fff;border:1px solid var(--hairline);color:var(--ink-soft);border-radius:8px;
+    padding:8px 14px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;
+  }
+  .snapshot-btn:hover{border-color:var(--teal);color:var(--teal-dark);}
+  #snapshot-modal .modal-card{max-width:640px;}
+  #snapshot-body{font-size:13px;line-height:1.6;color:var(--ink);white-space:pre-wrap;font-family:'IBM Plex Mono',monospace;
+    background:var(--paper);border-radius:8px;padding:14px;max-height:50vh;overflow-y:auto;}
+  #print-area{display:none;}
+  @media print{
+    body *{visibility:hidden;}
+    #print-area, #print-area *{visibility:visible;}
+    #print-area{display:block;position:absolute;top:0;left:0;width:100%;padding:20px;white-space:pre-wrap;font-family:'IBM Plex Mono',monospace;font-size:12px;}
+  }
+
   .filter-bar{
     display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;
     background:var(--paper-raised);border:1px solid var(--hairline);border-radius:10px;padding:10px;
@@ -262,30 +337,6 @@
     text-align:center;padding:40px 20px;color:var(--ink-soft);font-size:13.5px;
   }
 
-  /* ---- Financial model ---- */
-  .fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
-  @media (max-width:640px){.fin-grid{grid-template-columns:1fr;}}
-  .card{
-    background:var(--paper-raised);border:1px solid var(--hairline);border-radius:12px;
-    padding:16px 18px;box-shadow:var(--shadow);
-  }
-  .card h3{font-size:14.5px;margin:0 0 12px;font-family:'Fraunces',serif;font-weight:600;}
-  .card h3 .unit{font-size:11px;color:var(--slate);font-family:'Inter',sans-serif;font-weight:400;}
-  table.data-table{width:100%;border-collapse:collapse;font-size:12.5px;}
-  table.data-table th{
-    text-align:left;font-weight:600;color:var(--ink-soft);font-size:11px;text-transform:uppercase;
-    letter-spacing:0.03em;padding:6px 8px;border-bottom:1px solid var(--hairline);
-  }
-  table.data-table td{padding:6px 8px;border-bottom:1px solid var(--hairline);font-family:'IBM Plex Mono',monospace;font-size:12px;}
-  table.data-table td.label-cell{font-family:'Inter',sans-serif;color:var(--ink-soft);}
-  table.data-table tr:last-child td{border-bottom:none;}
-  table.data-table tr.highlight td{background:var(--teal-tint);font-weight:600;color:var(--teal-dark);}
-  .neg{color:var(--red);}
-  .pos{color:var(--teal-dark);}
-  .fin-note{font-size:11.5px;color:var(--slate);margin-top:10px;line-height:1.5;}
-  .full-width{grid-column:1/-1;}
-  .scroll-x{overflow-x:auto;}
-
   /* ---- Reference ---- */
   .ref-section{margin-bottom:20px;}
   .ref-section h2{font-size:16px;margin:0 0 10px;font-family:'Fraunces',serif;font-weight:600;color:var(--ink);}
@@ -322,7 +373,10 @@
         <h1>UA House CHW Program Planner</h1>
         <p class="subtitle">Anthem CalAIM Community Health Worker program &mdash; readiness through launch</p>
       </div>
-      <span class="program-badge">Jul 2026 &ndash; ongoing</span>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <button class="snapshot-btn" id="open-snapshot">Export Snapshot</button>
+        <span class="program-badge">Jul 2026 &ndash; ongoing</span>
+      </div>
     </div>
     <div class="overall-progress">
       <div class="op-row">
@@ -337,6 +391,7 @@
     <button data-tab="dashboard" class="active">Dashboard</button>
     <button data-tab="timeline">Timeline</button>
     <button data-tab="tasks">Tasks</button>
+    <button data-tab="contacts">Contacts</button>
     <button data-tab="reference">Reference</button>
   </nav>
 
@@ -366,7 +421,7 @@
   <div class="modal-overlay" id="add-task-overlay">
     <div class="modal-card">
       <div class="modal-header">
-        <h3>Add a task</h3>
+        <h3 id="task-modal-title">Add a task</h3>
         <button class="modal-close" id="close-add-task" aria-label="Close">&times;</button>
       </div>
       <form id="add-task-form">
@@ -410,13 +465,117 @@
         <label>Notes
           <textarea id="new-task-notes" placeholder="Optional"></textarea>
         </label>
-        <div class="modal-actions">
-          <button type="button" class="btn-secondary" id="cancel-add-task">Cancel</button>
-          <button type="submit" class="btn-primary" id="submit-add-task">Add task</button>
+        <input type="hidden" id="editing-task-id" value="">
+        <div class="modal-actions" style="justify-content:space-between;">
+          <button type="button" class="btn-danger" id="delete-task-btn" style="display:none;">Delete task</button>
+          <div style="display:flex;gap:8px;">
+            <button type="button" class="btn-secondary" id="cancel-add-task">Cancel</button>
+            <button type="submit" class="btn-primary" id="submit-add-task">Add task</button>
+          </div>
         </div>
       </form>
     </div>
   </div>
+
+  <section id="tab-contacts" class="tabpanel">
+    <div class="contacts-toolbar">
+      <button class="add-task-btn" id="open-add-contact">+ Add Contact</button>
+      <button class="add-task-btn" id="open-add-doclink">+ Add Link</button>
+    </div>
+    <h2 class="contacts-section-title">Key Contacts</h2>
+    <div id="contacts-list"></div>
+    <h2 class="contacts-section-title" style="margin-top:24px;">Documents &amp; Links</h2>
+    <div id="doclinks-list"></div>
+  </section>
+
+  <div class="modal-overlay" id="contact-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="contact-modal-title">Add a contact</h3>
+        <button class="modal-close" id="close-contact-modal" aria-label="Close">&times;</button>
+      </div>
+      <form id="contact-form">
+        <label>Name <span class="req">*</span>
+          <input type="text" id="new-contact-name" required placeholder="e.g. Anthem CalAIM CHW Team">
+        </label>
+        <div class="form-row">
+          <label>Organization
+            <input type="text" id="new-contact-org" placeholder="Optional">
+          </label>
+          <label>Role
+            <input type="text" id="new-contact-role" placeholder="Optional">
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Email
+            <input type="text" id="new-contact-email" placeholder="Optional">
+          </label>
+          <label>Phone / fax
+            <input type="text" id="new-contact-phone" placeholder="Optional">
+          </label>
+        </div>
+        <label>Notes
+          <textarea id="new-contact-notes" placeholder="Optional"></textarea>
+        </label>
+        <input type="hidden" id="editing-contact-id" value="">
+        <div class="modal-actions" style="justify-content:space-between;">
+          <button type="button" class="btn-danger" id="delete-contact-btn" style="display:none;">Delete</button>
+          <div style="display:flex;gap:8px;">
+            <button type="button" class="btn-secondary" id="cancel-contact">Cancel</button>
+            <button type="submit" class="btn-primary" id="submit-contact">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="doclink-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="doclink-modal-title">Add a link</h3>
+        <button class="modal-close" id="close-doclink-modal" aria-label="Close">&times;</button>
+      </div>
+      <form id="doclink-form">
+        <label>Label <span class="req">*</span>
+          <input type="text" id="new-doclink-label" required placeholder="e.g. CHW Progress Note template">
+        </label>
+        <div class="form-row">
+          <label>URL
+            <input type="text" id="new-doclink-url" placeholder="https://...">
+          </label>
+          <label>Category
+            <input type="text" id="new-doclink-category" placeholder="e.g. Forms">
+          </label>
+        </div>
+        <label>Notes
+          <textarea id="new-doclink-notes" placeholder="Optional"></textarea>
+        </label>
+        <input type="hidden" id="editing-doclink-id" value="">
+        <div class="modal-actions" style="justify-content:space-between;">
+          <button type="button" class="btn-danger" id="delete-doclink-btn" style="display:none;">Delete</button>
+          <div style="display:flex;gap:8px;">
+            <button type="button" class="btn-secondary" id="cancel-doclink">Cancel</button>
+            <button type="submit" class="btn-primary" id="submit-doclink">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="snapshot-overlay">
+    <div class="modal-card" id="snapshot-modal">
+      <div class="modal-header">
+        <h3>Status snapshot</h3>
+        <button class="modal-close" id="close-snapshot" aria-label="Close">&times;</button>
+      </div>
+      <div id="snapshot-body"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="copy-snapshot">Copy as text</button>
+        <button type="button" class="btn-primary" id="print-snapshot">Print</button>
+      </div>
+    </div>
+  </div>
+  <div id="print-area"></div>
 
   <section id="tab-reference" class="tabpanel">
     <div id="reference-content"></div>
@@ -648,6 +807,7 @@ function buildTaskRowHTML(t){
           </select>
           <input type="text" class="owner-input" placeholder="Owner" value="${(ts.owner||'').replace(/"/g,'&quot;')}" data-id="${t.id}">
           <span class="task-source">${t.Source||''}</span>
+          <button type="button" class="task-edit-btn" data-id="${t.id}">Edit</button>
         </div>
         ${t.Notes? `<div class="task-notes">${t.Notes}</div>` : ''}
       </div>
@@ -680,17 +840,40 @@ function wireTaskRowEvents(container){
     });
     inp.addEventListener('click', e=>e.stopPropagation());
   });
+  container.querySelectorAll('.task-edit-btn').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const id = parseInt(e.target.dataset.id);
+      openEditTaskModal(id);
+    });
+  });
 }
 
 // ---------- Dashboard ----------
+function getMyTasksPref(){
+  return {
+    name: localStorage.getItem('plannerMyName') || '',
+    only: localStorage.getItem('plannerMyTasksOnly') === '1',
+  };
+}
+function setMyTasksPref(name, only){
+  localStorage.setItem('plannerMyName', name);
+  localStorage.setItem('plannerMyTasksOnly', only ? '1' : '0');
+}
+
 function renderDashboard(){
   const el = document.getElementById('dashboard-content');
   const today = new Date(); today.setHours(0,0,0,0);
   const monday = getMonday(today);
   const sunday = addDays(monday,6);
-  const nextMonday = addDays(monday,7);
 
-  const notDone = TASKS.filter(t=>getTaskState(t.id).status!=='Done');
+  const pref = getMyTasksPref();
+  let baseTasks = TASKS;
+  if(pref.only && pref.name.trim()){
+    const nameLower = pref.name.trim().toLowerCase();
+    baseTasks = TASKS.filter(t=>(t.Owner||'').trim().toLowerCase() === nameLower);
+  }
+
+  const notDone = baseTasks.filter(t=>getTaskState(t.id).status!=='Done');
 
   const withParsedDate = notDone.map(t=>({t, d: parseISO(t['Target Date'])}));
 
@@ -698,7 +881,6 @@ function renderDashboard(){
   const thisWeek = withParsedDate.filter(x=>x.d && x.d.getTime()>=monday.getTime() && x.d.getTime()<=sunday.getTime()).map(x=>x.t);
   const noFixedDate = withParsedDate.filter(x=>!x.d).map(x=>x.t);
 
-  // group "coming up" into the following 3 weeks
   const comingUpWeeks = [];
   for(let w=1; w<=3; w++){
     const wStart = addDays(monday, w*7);
@@ -709,14 +891,20 @@ function renderDashboard(){
   const laterDate = addDays(monday, 28);
   const later = withParsedDate.filter(x=>x.d && x.d.getTime()>=laterDate.getTime()).map(x=>x.t);
 
-  const total = TASKS.length;
-  const done = TASKS.filter(t=>getTaskState(t.id).status==='Done').length;
-  const blocked = TASKS.filter(t=>getTaskState(t.id).status==='Blocked').length;
-  const inProgress = TASKS.filter(t=>getTaskState(t.id).status==='In Progress').length;
+  const total = baseTasks.length;
+  const done = baseTasks.filter(t=>getTaskState(t.id).status==='Done').length;
+  const inProgress = baseTasks.filter(t=>getTaskState(t.id).status==='In Progress').length;
 
   const wf = (d)=>d.toLocaleDateString('en-US',{month:'short', day:'numeric'});
 
   let html = `
+    <div class="my-tasks-bar">
+      <label class="toggle-label">
+        <span class="toggle-switch ${pref.only?'on':''}" id="my-tasks-toggle"><span class="knob"></span></span>
+        My tasks only
+      </label>
+      <input type="text" id="my-name-input" placeholder="Your name (must match Owner field)" value="${pref.name.replace(/"/g,'&quot;')}">
+    </div>
     <div class="stat-row">
       <div class="stat-tile good"><div class="stat-num">${done}</div><div class="stat-label">Done</div></div>
       <div class="stat-tile"><div class="stat-num">${inProgress}</div><div class="stat-label">In progress</div></div>
@@ -724,6 +912,10 @@ function renderDashboard(){
       <div class="stat-tile"><div class="stat-num">${total-done}</div><div class="stat-label">Remaining</div></div>
     </div>
   `;
+
+  if(pref.only && pref.name.trim() && total===0){
+    html += `<div class="dash-empty">No tasks found with Owner set to "${pref.name.trim().replace(/"/g,'&quot;')}". Owner is case-insensitive but must match exactly otherwise.</div>`;
+  }
 
   if(overdue.length){
     html += `<div class="dash-section"><h2>Overdue</h2><p class="dash-sub">Past their target date and not marked done.</p><div id="dash-overdue"></div></div>`;
@@ -738,6 +930,16 @@ function renderDashboard(){
   }
 
   el.innerHTML = html;
+
+  document.getElementById('my-tasks-toggle').addEventListener('click', ()=>{
+    const nameVal = document.getElementById('my-name-input').value;
+    setMyTasksPref(nameVal, !pref.only);
+    renderDashboard();
+  });
+  document.getElementById('my-name-input').addEventListener('change', e=>{
+    setMyTasksPref(e.target.value, pref.only);
+    renderDashboard();
+  });
 
   if(overdue.length){
     document.getElementById('dash-overdue').innerHTML = overdue.map(buildTaskRowHTML).join('');
@@ -900,9 +1102,282 @@ function renderAll(){
   renderGateRail();
   renderTasks();
   renderReference();
+  renderContacts();
+  renderDocLinks();
 }
 
-// ---------- Add Task modal ----------
+// ---------- Contacts & Document Links ----------
+let CONTACTS = [];
+let DOCLINKS = [];
+
+async function loadContactsFromDB(){
+  const { data, error } = await sb.from('contacts').select('*').order('sort_order', {ascending:true});
+  if(error){ console.error('Failed to load contacts', error); return; }
+  CONTACTS = data || [];
+  renderContacts();
+}
+async function loadDocLinksFromDB(){
+  const { data, error } = await sb.from('doc_links').select('*').order('sort_order', {ascending:true});
+  if(error){ console.error('Failed to load doc links', error); return; }
+  DOCLINKS = data || [];
+  renderDocLinks();
+}
+
+function renderContacts(){
+  const el = document.getElementById('contacts-list');
+  if(!el) return;
+  if(!CONTACTS.length){
+    el.innerHTML = '<div class="empty-state">No contacts yet. Add the people and teams you work with on this program.</div>';
+    return;
+  }
+  el.innerHTML = CONTACTS.map(c=>`
+    <div class="contact-card" data-id="${c.id}">
+      <div class="contact-top">
+        <div>
+          <div class="contact-name">${c.name}</div>
+          ${c.org || c.role ? `<div class="contact-org">${[c.org, c.role].filter(Boolean).join(' &middot; ')}</div>` : ''}
+        </div>
+        <div class="contact-actions">
+          <button type="button" class="task-edit-btn contact-edit-btn" data-id="${c.id}">Edit</button>
+        </div>
+      </div>
+      ${c.email ? `<div class="contact-detail"><b>Email:</b> ${c.email}</div>` : ''}
+      ${c.phone ? `<div class="contact-detail"><b>Phone/fax:</b> ${c.phone}</div>` : ''}
+      ${c.notes ? `<div class="contact-notes">${c.notes}</div>` : ''}
+    </div>
+  `).join('');
+  el.querySelectorAll('.contact-edit-btn').forEach(btn=>{
+    btn.addEventListener('click', e=>openEditContactModal(parseInt(e.target.dataset.id)));
+  });
+}
+
+function renderDocLinks(){
+  const el = document.getElementById('doclinks-list');
+  if(!el) return;
+  if(!DOCLINKS.length){
+    el.innerHTML = '<div class="empty-state">No links yet. Add forms, templates, and reference docs here as you create them.</div>';
+    return;
+  }
+  el.innerHTML = DOCLINKS.map(d=>`
+    <div class="doclink-row" data-id="${d.id}">
+      <div class="doclink-main">
+        ${d.url ? `<a href="${d.url}" target="_blank" rel="noopener">${d.label}</a>` : `<span>${d.label}</span>`}
+        <div class="doclink-meta">${[d.category, d.notes].filter(Boolean).join(' &middot; ')}</div>
+      </div>
+      <button type="button" class="task-edit-btn doclink-edit-btn" data-id="${d.id}">Edit</button>
+    </div>
+  `).join('');
+  el.querySelectorAll('.doclink-edit-btn').forEach(btn=>{
+    btn.addEventListener('click', e=>openEditDocLinkModal(parseInt(e.target.dataset.id)));
+  });
+}
+
+function openAddContactModal(){
+  document.getElementById('contact-form').reset();
+  document.getElementById('editing-contact-id').value = '';
+  document.getElementById('contact-modal-title').textContent = 'Add a contact';
+  document.getElementById('delete-contact-btn').style.display = 'none';
+  document.getElementById('contact-overlay').classList.add('open');
+}
+function openEditContactModal(id){
+  const c = CONTACTS.find(x=>x.id===id);
+  if(!c) return;
+  document.getElementById('editing-contact-id').value = id;
+  document.getElementById('contact-modal-title').textContent = 'Edit contact';
+  document.getElementById('delete-contact-btn').style.display = '';
+  document.getElementById('new-contact-name').value = c.name || '';
+  document.getElementById('new-contact-org').value = c.org || '';
+  document.getElementById('new-contact-role').value = c.role || '';
+  document.getElementById('new-contact-email').value = c.email || '';
+  document.getElementById('new-contact-phone').value = c.phone || '';
+  document.getElementById('new-contact-notes').value = c.notes || '';
+  document.getElementById('contact-overlay').classList.add('open');
+}
+function closeContactModal(){
+  document.getElementById('contact-overlay').classList.remove('open');
+  document.getElementById('contact-form').reset();
+}
+document.getElementById('open-add-contact').addEventListener('click', openAddContactModal);
+document.getElementById('close-contact-modal').addEventListener('click', closeContactModal);
+document.getElementById('cancel-contact').addEventListener('click', closeContactModal);
+document.getElementById('contact-overlay').addEventListener('click', e=>{
+  if(e.target.id==='contact-overlay') closeContactModal();
+});
+document.getElementById('delete-contact-btn').addEventListener('click', async ()=>{
+  const idStr = document.getElementById('editing-contact-id').value;
+  if(!idStr) return;
+  if(!confirm('Delete this contact? This cannot be undone.')) return;
+  const { error } = await sb.from('contacts').delete().eq('id', parseInt(idStr));
+  if(error){ console.error('Failed to delete contact', error); showSyncBanner('save-failed'); return; }
+  closeContactModal();
+  await loadContactsFromDB();
+});
+document.getElementById('contact-form').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const name = document.getElementById('new-contact-name').value.trim();
+  if(!name) return;
+  const fields = {
+    name: name,
+    org: document.getElementById('new-contact-org').value.trim(),
+    role: document.getElementById('new-contact-role').value.trim(),
+    email: document.getElementById('new-contact-email').value.trim(),
+    phone: document.getElementById('new-contact-phone').value.trim(),
+    notes: document.getElementById('new-contact-notes').value.trim(),
+  };
+  const editingId = document.getElementById('editing-contact-id').value;
+  const submitBtn = document.getElementById('submit-contact');
+  submitBtn.disabled = true;
+
+  let error;
+  if(editingId){
+    ({ error } = await sb.from('contacts').update(fields).eq('id', parseInt(editingId)));
+  } else {
+    const maxSort = CONTACTS.reduce((m,c)=>Math.max(m, c.sort_order ?? 0), CONTACTS.length);
+    ({ error } = await sb.from('contacts').insert({...fields, sort_order: maxSort + 1}));
+  }
+  submitBtn.disabled = false;
+  if(error){ console.error('Failed to save contact', error); showSyncBanner('save-failed'); return; }
+  closeContactModal();
+  await loadContactsFromDB();
+});
+
+function openAddDocLinkModal(){
+  document.getElementById('doclink-form').reset();
+  document.getElementById('editing-doclink-id').value = '';
+  document.getElementById('doclink-modal-title').textContent = 'Add a link';
+  document.getElementById('delete-doclink-btn').style.display = 'none';
+  document.getElementById('doclink-overlay').classList.add('open');
+}
+function openEditDocLinkModal(id){
+  const d = DOCLINKS.find(x=>x.id===id);
+  if(!d) return;
+  document.getElementById('editing-doclink-id').value = id;
+  document.getElementById('doclink-modal-title').textContent = 'Edit link';
+  document.getElementById('delete-doclink-btn').style.display = '';
+  document.getElementById('new-doclink-label').value = d.label || '';
+  document.getElementById('new-doclink-url').value = d.url || '';
+  document.getElementById('new-doclink-category').value = d.category || '';
+  document.getElementById('new-doclink-notes').value = d.notes || '';
+  document.getElementById('doclink-overlay').classList.add('open');
+}
+function closeDocLinkModal(){
+  document.getElementById('doclink-overlay').classList.remove('open');
+  document.getElementById('doclink-form').reset();
+}
+document.getElementById('open-add-doclink').addEventListener('click', openAddDocLinkModal);
+document.getElementById('close-doclink-modal').addEventListener('click', closeDocLinkModal);
+document.getElementById('cancel-doclink').addEventListener('click', closeDocLinkModal);
+document.getElementById('doclink-overlay').addEventListener('click', e=>{
+  if(e.target.id==='doclink-overlay') closeDocLinkModal();
+});
+document.getElementById('delete-doclink-btn').addEventListener('click', async ()=>{
+  const idStr = document.getElementById('editing-doclink-id').value;
+  if(!idStr) return;
+  if(!confirm('Delete this link? This cannot be undone.')) return;
+  const { error } = await sb.from('doc_links').delete().eq('id', parseInt(idStr));
+  if(error){ console.error('Failed to delete link', error); showSyncBanner('save-failed'); return; }
+  closeDocLinkModal();
+  await loadDocLinksFromDB();
+});
+document.getElementById('doclink-form').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const label = document.getElementById('new-doclink-label').value.trim();
+  if(!label) return;
+  const fields = {
+    label: label,
+    url: document.getElementById('new-doclink-url').value.trim(),
+    category: document.getElementById('new-doclink-category').value.trim(),
+    notes: document.getElementById('new-doclink-notes').value.trim(),
+  };
+  const editingId = document.getElementById('editing-doclink-id').value;
+  const submitBtn = document.getElementById('submit-doclink');
+  submitBtn.disabled = true;
+
+  let error;
+  if(editingId){
+    ({ error } = await sb.from('doc_links').update(fields).eq('id', parseInt(editingId)));
+  } else {
+    const maxSort = DOCLINKS.reduce((m,d)=>Math.max(m, d.sort_order ?? 0), DOCLINKS.length);
+    ({ error } = await sb.from('doc_links').insert({...fields, sort_order: maxSort + 1}));
+  }
+  submitBtn.disabled = false;
+  if(error){ console.error('Failed to save link', error); showSyncBanner('save-failed'); return; }
+  closeDocLinkModal();
+  await loadDocLinksFromDB();
+});
+
+// ---------- Snapshot export ----------
+function buildSnapshotText(){
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+  const total = TASKS.length;
+  const done = TASKS.filter(t=>getTaskState(t.id).status==='Done').length;
+  const blocked = TASKS.filter(t=>getTaskState(t.id).status==='Blocked').length;
+  const pct = total ? Math.round(done/total*100) : 0;
+
+  let out = `UA HOUSE CHW PROGRAM -- STATUS SNAPSHOT\n${dateStr}\n\n`;
+  out += `Overall progress: ${done}/${total} tasks complete (${pct}%)\n`;
+  out += `Blocked tasks: ${blocked}\n\n`;
+  out += `PHASE STATUS\n`;
+  PHASE_DATA.phases.forEach((p, idx)=>{
+    const pts = phaseTasks(p.Phase);
+    const pdone = pts.filter(t=>getTaskState(t.id).status==='Done').length;
+    const ptotal = pts.length;
+    out += `${idx+1}. ${p.Phase} -- ${pdone}/${ptotal} tasks (${fmtDate(p.Start)} to ${fmtDate(p['Target Completion'])})\n`;
+  });
+
+  const today0 = new Date(); today0.setHours(0,0,0,0);
+  const monday = getMonday(today0);
+  const sunday = addDays(monday, 6);
+  const notDone = TASKS.filter(t=>getTaskState(t.id).status!=='Done');
+  const withDate = notDone.map(t=>({t, d: parseISO(t['Target Date'])}));
+  const overdue = withDate.filter(x=>x.d && x.d.getTime() < monday.getTime()).map(x=>x.t);
+  const thisWeek = withDate.filter(x=>x.d && x.d.getTime()>=monday.getTime() && x.d.getTime()<=sunday.getTime()).map(x=>x.t);
+
+  if(overdue.length){
+    out += `\nOVERDUE (${overdue.length})\n`;
+    overdue.forEach(t=>{ out += `- ${t.Task} (${fmtDate(t['Target Date'])}${t.Owner? ', '+t.Owner:''})\n`; });
+  }
+  out += `\nTHIS WEEK (${thisWeek.length})\n`;
+  if(thisWeek.length){
+    thisWeek.forEach(t=>{ out += `- ${t.Task}${t.Owner? ' -- '+t.Owner:''}\n`; });
+  } else {
+    out += `- Nothing due this week.\n`;
+  }
+  return out;
+}
+
+function openSnapshotModal(){
+  const text = buildSnapshotText();
+  document.getElementById('snapshot-body').textContent = text;
+  document.getElementById('snapshot-overlay').classList.add('open');
+}
+document.getElementById('open-snapshot').addEventListener('click', openSnapshotModal);
+document.getElementById('close-snapshot').addEventListener('click', ()=>{
+  document.getElementById('snapshot-overlay').classList.remove('open');
+});
+document.getElementById('snapshot-overlay').addEventListener('click', e=>{
+  if(e.target.id==='snapshot-overlay') document.getElementById('snapshot-overlay').classList.remove('open');
+});
+document.getElementById('copy-snapshot').addEventListener('click', async ()=>{
+  const text = document.getElementById('snapshot-body').textContent;
+  const btn = document.getElementById('copy-snapshot');
+  try{
+    await navigator.clipboard.writeText(text);
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(()=>{ btn.textContent = orig; }, 1500);
+  }catch(e){
+    console.error('Clipboard write failed', e);
+    alert('Could not copy automatically -- select the text and copy manually.');
+  }
+});
+document.getElementById('print-snapshot').addEventListener('click', ()=>{
+  document.getElementById('print-area').textContent = document.getElementById('snapshot-body').textContent;
+  window.print();
+});
+
+// ---------- Add/Edit Task modal ----------
 function populateAddTaskForm(){
   const phaseSel = document.getElementById('new-task-phase');
   phaseSel.innerHTML = '';
@@ -922,12 +1397,40 @@ function populateAddTaskForm(){
 
 function openAddTaskModal(){
   populateAddTaskForm();
+  document.getElementById('editing-task-id').value = '';
+  document.getElementById('task-modal-title').textContent = 'Add a task';
+  document.getElementById('submit-add-task').textContent = 'Add task';
+  document.getElementById('delete-task-btn').style.display = 'none';
   document.getElementById('add-task-overlay').classList.add('open');
   document.getElementById('new-task-text').focus();
 }
+
+function openEditTaskModal(id){
+  const t = TASKS.find(x=>x.id===id);
+  if(!t) return;
+  populateAddTaskForm();
+  document.getElementById('editing-task-id').value = id;
+  document.getElementById('task-modal-title').textContent = 'Edit task';
+  document.getElementById('submit-add-task').textContent = 'Save changes';
+  document.getElementById('delete-task-btn').style.display = '';
+
+  document.getElementById('new-task-text').value = t.Task || '';
+  document.getElementById('new-task-phase').value = t.Phase || '';
+  document.getElementById('new-task-track').value = t.Track || 'Internal';
+  document.getElementById('new-task-category').value = t.Category || '';
+  const rawDate = t['Target Date'];
+  document.getElementById('new-task-date').value = parseISO(rawDate) ? rawDate : '';
+  document.getElementById('new-task-owner').value = t.Owner || '';
+  document.getElementById('new-task-status').value = t.Status || 'Not Started';
+  document.getElementById('new-task-notes').value = t.Notes || '';
+
+  document.getElementById('add-task-overlay').classList.add('open');
+}
+
 function closeAddTaskModal(){
   document.getElementById('add-task-overlay').classList.remove('open');
   document.getElementById('add-task-form').reset();
+  document.getElementById('editing-task-id').value = '';
 }
 
 document.getElementById('open-add-task').addEventListener('click', openAddTaskModal);
@@ -935,6 +1438,32 @@ document.getElementById('close-add-task').addEventListener('click', closeAddTask
 document.getElementById('cancel-add-task').addEventListener('click', closeAddTaskModal);
 document.getElementById('add-task-overlay').addEventListener('click', e=>{
   if(e.target.id==='add-task-overlay') closeAddTaskModal();
+});
+
+document.getElementById('delete-task-btn').addEventListener('click', async ()=>{
+  const idStr = document.getElementById('editing-task-id').value;
+  if(!idStr) return;
+  const id = parseInt(idStr);
+  const t = TASKS.find(x=>x.id===id);
+  const label = t ? t.Task.slice(0,60) : 'this task';
+  if(!confirm(`Delete "${label}${t && t.Task.length>60?'...':''}"? This cannot be undone.`)) return;
+
+  const delBtn = document.getElementById('delete-task-btn');
+  delBtn.disabled = true;
+  delBtn.textContent = 'Deleting...';
+
+  const { error } = await sb.from('tasks').delete().eq('id', id);
+
+  delBtn.disabled = false;
+  delBtn.textContent = 'Delete task';
+
+  if(error){
+    console.error('Failed to delete task', error);
+    showSyncBanner('save-failed');
+    return;
+  }
+  closeAddTaskModal();
+  await loadTasksFromDB();
 });
 
 document.getElementById('add-task-form').addEventListener('submit', async e=>{
@@ -950,11 +1479,34 @@ document.getElementById('add-task-form').addEventListener('submit', async e=>{
   const status = document.getElementById('new-task-status').value;
   const notes = document.getElementById('new-task-notes').value.trim();
   const pacing = track === 'Anthem' ? 'Anthem-paced' : (phase === 'Ongoing / Cross-Phase' ? 'Continuous' : 'Internal');
-  const maxSort = TASKS.reduce((m,t)=> Math.max(m, (t.sort_order ?? 0)), TASKS.length ? TASKS.length : 0);
+  const editingId = document.getElementById('editing-task-id').value;
 
   const submitBtn = document.getElementById('submit-add-task');
   submitBtn.disabled = true;
+
+  if(editingId){
+    submitBtn.textContent = 'Saving...';
+    const { error } = await sb.from('tasks').update({
+      phase: phase, track: track, pacing: pacing, category: category || 'General',
+      task: taskText, owner: owner, target_date: dateVal || 'No fixed date',
+      status: status, notes: notes,
+    }).eq('id', parseInt(editingId));
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Save changes';
+
+    if(error){
+      console.error('Failed to save task', error);
+      showSyncBanner('save-failed');
+      return;
+    }
+    closeAddTaskModal();
+    await loadTasksFromDB();
+    return;
+  }
+
   submitBtn.textContent = 'Adding...';
+  const maxSort = TASKS.reduce((m,t)=> Math.max(m, (t.sort_order ?? 0)), TASKS.length ? TASKS.length : 0);
 
   const { error } = await sb.from('tasks').insert({
     phase: phase,
@@ -990,6 +1542,8 @@ document.getElementById('add-task-form').addEventListener('submit', async e=>{
 populateFilterOptions();
 renderAll();
 loadTasksFromDB();
+loadContactsFromDB();
+loadDocLinksFromDB();
 </script>
 </body>
 </html>
